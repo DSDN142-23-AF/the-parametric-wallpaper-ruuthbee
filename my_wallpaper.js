@@ -4,6 +4,8 @@ let fishbodyX = 20;
 let fishshadowX = fishbodyX - 7;
 let fishshadowY = fishbodyY + 15;
 let fisheyesize = 5;
+let dorsalfinX = fishbodyX + 0;
+let dorsalfinY = fishbodyY - 0;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -22,24 +24,15 @@ function wallpaper_background() {
 
 function my_symbol() {
   // do not rename this function. Treat this similarly to a Draw function
-  fishshadow();
+  //fishshadow();
   fishbody();
   fisheye();
+  fishfins();
+  finscales();
+  fishscales();
 }
 
 function fishbody(x, y) {
-  strokeWeight(3);
-  point(fishbodyX, fishbodyY); //nose
-  point(fishbodyX + 40, fishbodyY + 10); //top of head
-  point(fishbodyX + 90, fishbodyY + 60); // top of body
-  point(fishbodyX + 130, fishbodyY + 120); //body and tail join (top)
-  point(fishbodyX + 170, fishbodyY + 150); // top of tail
-  point(fishbodyX + 160, fishbodyY + 160); // middle of tail
-  point(fishbodyX + 150, fishbodyY + 170); // bottom of tail
-  point(fishbodyX + 130, fishbodyY + 120); // body and tail join (bottom)
-  point(fishbodyX + 65, fishbodyY + 100); //bottom of body near tail
-  point(fishbodyX + 15, fishbodyY + 45); //bottom of head
-
   strokeWeight(1);
   fill(255);
   //noFill();
@@ -55,7 +48,6 @@ function fishbody(x, y) {
   curveVertex(fishbodyX + 130, fishbodyY + 122); // body and tail join (bottom)
   curveVertex(fishbodyX + 65, fishbodyY + 100); //bottom of body near tail
   curveVertex(fishbodyX + 10, fishbodyY + 40); // bottom of head
-
   endShape(CLOSE);
 }
 
@@ -84,8 +76,51 @@ function fisheye() {
   ellipse(fishbodyX + 29, fishbodyY + 16.5, fisheyesize * 0.5);
 }
 
-function fishfins() {}
+function fishfins() {
+  strokeWeight(1);
+  noFill();
 
+  beginShape();
+  curveVertex(dorsalfinX + 53, dorsalfinY + 20); //start of dorsal? fin (left side - near head)
+  curveVertex(fishbodyX + 53, fishbodyY + 20); //start of dorsal? fin (left side - near head)
+  //curveVertex(fishbodyX + 70, fishbodyY + 23);
+  curveVertex(dorsalfinX + 80, dorsalfinY + 30);
+  curveVertex(dorsalfinX + 105, dorsalfinY + 70);
+  curveVertex(dorsalfinX + 118, dorsalfinY + 100);
+  curveVertex(fishbodyX + 118, fishbodyY + 100);
+  curveVertex(dorsalfinX + 118, dorsalfinY + 100);
+  endShape();
+
+  //beginShape();
+  //curveVertex(fishbodyX + 45, fishbodyY + 40);
+  //curveVertex(fishbodyX + 40, fishbodyY + 40);
+  // curveVertex(fishbodyX + 38, fishbodyY + 55);
+  //curveVertex(fishbodyX + 60, fishbodyY + 75);
+  // curveVertex(fishbodyX + 80, fishbodyY + 85);
+  //curveVertex(fishbodyX + 80, fishbodyY + 85);
+  //endShape();
+
+  beginShape();
+  curveVertex(fishbodyX + 95, fishbodyY + 100);
+  curveVertex(fishbodyX + 70, fishbodyY + 103);
+  curveVertex(fishbodyX + 85, fishbodyY + 115);
+  curveVertex(fishbodyX + 95, fishbodyY + 110);
+  curveVertex(fishbodyX + 150, fishbodyY + 110);
+
+  endShape();
+}
+
+function finscales() {
+  line(fishbodyX + 145, fishbodyY + 135, fishbodyX + 170, fishbodyY + 150);
+  line(fishbodyX + 146, fishbodyY + 140, fishbodyX + 158, fishbodyY + 157);
+  line(fishbodyX + 142, fishbodyY + 138, fishbodyX + 150, fishbodyY + 168);
+}
 function fishscales() {}
+
+function seashells() {}
+
+function starfish() {}
+
+function seaweed() {}
 
 function water() {}
