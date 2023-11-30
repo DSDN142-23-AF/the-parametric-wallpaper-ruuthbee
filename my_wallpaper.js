@@ -24,10 +24,10 @@ function wallpaper_background() {
 
 function my_symbol() {
   // do not rename this function. Treat this similarly to a Draw function
-  //fishshadow();
+  fishshadow();
+  fishfins();
   fishbody();
   fisheye();
-  fishfins();
   finscales();
   fishscales();
 }
@@ -78,8 +78,7 @@ function fisheye() {
 
 function fishfins() {
   strokeWeight(1);
-  noFill();
-
+  fill(255);
   beginShape();
   curveVertex(dorsalfinX + 53, dorsalfinY + 20); //start of dorsal? fin (left side - near head)
   curveVertex(fishbodyX + 53, fishbodyY + 20); //start of dorsal? fin (left side - near head)
@@ -100,13 +99,13 @@ function fishfins() {
   //curveVertex(fishbodyX + 80, fishbodyY + 85);
   //endShape();
 
+  fill(255);
   beginShape();
   curveVertex(fishbodyX + 95, fishbodyY + 100);
   curveVertex(fishbodyX + 70, fishbodyY + 103);
   curveVertex(fishbodyX + 85, fishbodyY + 115);
   curveVertex(fishbodyX + 95, fishbodyY + 110);
   curveVertex(fishbodyX + 150, fishbodyY + 110);
-
   endShape();
 }
 
@@ -114,8 +113,19 @@ function finscales() {
   line(fishbodyX + 145, fishbodyY + 135, fishbodyX + 170, fishbodyY + 150);
   line(fishbodyX + 146, fishbodyY + 140, fishbodyX + 158, fishbodyY + 157);
   line(fishbodyX + 142, fishbodyY + 138, fishbodyX + 150, fishbodyY + 168);
+
+  line(fishbodyX + 65, fishbodyY + 32, fishbodyX + 75, fishbodyY + 33);
+  line(fishbodyX + 71, fishbodyY + 38, fishbodyX + 80, fishbodyY + 38.5);
 }
-function fishscales() {}
+function fishscales() {
+  line(fishbodyX + 25, fishbodyY + 50, fishbodyX + 45, fishbodyY + 45);
+  line(fishbodyX + 30, fishbodyY + 55, fishbodyX + 50, fishbodyY + 50);
+  line(fishbodyX + 45, fishbodyY + 43, fishbodyX + 40, fishbodyY + 65);
+  line(fishbodyX + 40, fishbodyY + 38, fishbodyX + 35, fishbodyY + 60);
+
+  line(fishbodyX + 90, fishbodyY + 70, fishbodyX + 88, fishbodyY + 85);
+  line(fishbodyX + 90, fishbodyY + 70, fishbodyX + 88, fishbodyY + 85);
+}
 
 function seashells() {}
 
