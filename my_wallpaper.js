@@ -124,7 +124,7 @@ function fishscales() {
   line(fishbodyX + 40, fishbodyY + 38, fishbodyX + 35, fishbodyY + 60);
 
   line(fishbodyX + 90, fishbodyY + 70, fishbodyX + 88, fishbodyY + 85);
-  line(fishbodyX + 90, fishbodyY + 70, fishbodyX + 88, fishbodyY + 85);
+  line(fishbodyX + 95, fishbodyY + 70, fishbodyX + 93, fishbodyY + 85);
 }
 
 function seashells() {}
