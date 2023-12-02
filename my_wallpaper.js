@@ -9,6 +9,18 @@ let dorsalfinY = fishbodyY - 0;
 let kinaX = 45;
 let kinaY = 155;
 let kinasize = 30;
+let seashellX = 165;
+let seashellY = 55;
+let seashellWidth = 5;
+let seashellHeight = seashellY - 40;
+let seashellPoint = seashellHeight - 10;
+
+let shellshadowX = seashellX - 7;
+let shellshadowY = seashellY + 5;
+let shellshadowHeight = shellshadowY - 40;
+let shellshadowPoint = shellshadowHeight - 10;
+
+let darkMode = false;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -22,7 +34,11 @@ function setup_wallpaper(pWallpaper) {
 }
 
 function wallpaper_background() {
-  background(240, 255, 240); //light honeydew green colour
+  if (darkMode) {
+    background(1, 24, 74); //deep navy blue
+  } else {
+    background(240, 255, 240); //light honeydew green colour
+  }
 }
 
 function my_symbol() {
@@ -35,8 +51,8 @@ function my_symbol() {
   fishscales();
 
   seashellshadow();
-  seashells();
-  starfish();
+  kinashell();
+  seashell();
 }
 
 function fishbody(x, y) {
@@ -134,48 +150,230 @@ function fishscales() {
   line(fishbodyX + 95, fishbodyY + 75, fishbodyX + 93, fishbodyY + 90);
 }
 
-function seashells() {
+function kinashell() {
   ellipseMode(RADIUS);
   fill(255);
   ellipse(kinaX, kinaY, kinasize);
 
   ellipseMode(CENTER);
   fill(0);
-  ellipse(kinaX, kinaY, 5, 5);
+  ellipse(kinaX, kinaY, kinasize / 6);
 
   fill(255);
   stroke(0.5);
-  ellipse(kinaX, kinaY - 10, 1, 1);
-  ellipse(kinaX, kinaY + 10, 1, 1);
-  ellipse(kinaX - 10, kinaY, 1, 1);
-  ellipse(kinaX + 10, kinaY, 1, 1);
+  ellipse(kinaX, kinaY - kinasize / 3, kinasize / 30);
+  ellipse(kinaX, kinaY + kinasize / 3, kinasize / 30);
+  ellipse(kinaX - kinasize / 3, kinaY, kinasize / 30);
+  ellipse(kinaX + kinasize / 3, kinaY, kinasize / 30);
 
-  ellipse(kinaX, kinaY - 20, 2, 2);
-  ellipse(kinaX, kinaY + 20, 2, 2);
-  ellipse(kinaX - 20, kinaY, 2, 2);
-  ellipse(kinaX + 20, kinaY, 2, 2);
+  ellipse(kinaX, kinaY - kinasize / 1.5, kinasize / 15);
+  ellipse(kinaX, kinaY + kinasize / 1.5, kinasize / 15);
+  ellipse(kinaX - kinasize / 1.5, kinaY, kinasize / 15);
+  ellipse(kinaX + kinasize / 1.5, kinaY, kinasize / 15);
 
-  ellipse(kinaX, kinaY - 30, 3, 3);
-  ellipse(kinaX, kinaY + 30, 3, 3);
-  ellipse(kinaX - 30, kinaY, 3, 3);
-  ellipse(kinaX + 30, kinaY, 3, 3);
+  ellipse(kinaX, kinaY - kinasize, kinasize / 10);
+  ellipse(kinaX, kinaY + kinasize, kinasize / 10);
+  ellipse(kinaX - kinasize, kinaY, kinasize / 10);
+  ellipse(kinaX + kinasize, kinaY, kinasize / 10);
 
-  ellipse(kinaX - 10, kinaY - 10, 1.5, 1.5);
-  ellipse(kinaX + 10, kinaY + 10, 1.5, 1.5);
-  ellipse(kinaX - 10, kinaY + 10, 1.5, 1.5);
-  ellipse(kinaX + 10, kinaY - 10, 1.5, 1.5);
+  ellipse(kinaX - kinasize / 3, kinaY - kinasize / 3, kinasize / 20);
+  ellipse(kinaX + kinasize / 3, kinaY + kinasize / 3, kinasize / 20);
+  ellipse(kinaX - kinasize / 3, kinaY + kinasize / 3, kinasize / 20);
+  ellipse(kinaX + kinasize / 3, kinaY - kinasize / 3, kinasize / 20);
 
-  ellipse(kinaX - 20, kinaY - 20, 2.5, 2.5);
-  ellipse(kinaX + 20, kinaY + 20, 2.5, 2.5);
-  ellipse(kinaX - 20, kinaY + 20, 2.5, 2.5);
-  ellipse(kinaX + 20, kinaY - 20, 2.5, 2.5);
+  ellipse(kinaX - kinasize / 1.5, kinaY - kinasize / 1.5, kinasize / 12);
+  ellipse(kinaX + kinasize / 1.5, kinaY + kinasize / 1.5, kinasize / 12);
+  ellipse(kinaX - kinasize / 1.5, kinaY + kinasize / 1.5, kinasize / 12);
+  ellipse(kinaX + kinasize / 1.5, kinaY - kinasize / 1.5, kinasize / 12);
 }
 
 function seashellshadow() {
   fill(000);
-  ellipse(kinaX - 7, kinaY + 15, kinasize * 1.8);
+
+  ellipse(kinaX - 7, kinaY + 15, kinasize * 1.8); //kina shadow
+
+  //seashell shadow
+  triangle(
+    //right bottom piece
+    shellshadowX,
+    shellshadowY,
+    shellshadowX + seashellWidth + 10,
+    shellshadowHeight + 30,
+    shellshadowX + seashellWidth + 7,
+    shellshadowY + 2
+  );
+
+  triangle(
+    //left bottom piece
+    shellshadowX,
+    shellshadowY,
+    shellshadowX - seashellWidth - 10,
+    shellshadowHeight + 30,
+    shellshadowX - seashellWidth - 7,
+    shellshadowY + 2
+  );
+
+  beginShape(); // number three left from center
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth - 18, shellshadowHeight + 30);
+  curveVertex(shellshadowX - 20, shellshadowPoint + 30); //apex of segment
+  curveVertex(shellshadowX + seashellWidth - 15, shellshadowHeight + 30);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
+
+  beginShape(); // number three right from center
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth + 15, shellshadowHeight + 30);
+  curveVertex(shellshadowX + 20, shellshadowPoint + 30); //apex of segment
+  curveVertex(shellshadowX + seashellWidth + 18, shellshadowHeight + 30);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
+
+  beginShape(); // number two left from center
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth - 17, shellshadowHeight + 15);
+  curveVertex(shellshadowX - 17, shellshadowPoint + 15); //apex of segment
+  curveVertex(shellshadowX + seashellWidth - 15, shellshadowHeight + 15);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
+
+  beginShape(); // number two right from center
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth + 15, shellshadowHeight + 15);
+  curveVertex(shellshadowX + 17, shellshadowPoint + 15); //apex of segment
+  curveVertex(shellshadowX + seashellWidth + 16, shellshadowHeight + 15);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
+
+  beginShape(); // number one left from center
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth - 10, shellshadowHeight + 5);
+  curveVertex(shellshadowX - 10, shellshadowPoint + 5); //apex of segment
+  curveVertex(shellshadowX + seashellWidth - 10, shellshadowHeight + 5);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
+
+  beginShape(); // number one right from center
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth + 10, shellshadowHeight + 5);
+  curveVertex(shellshadowX + 10, shellshadowPoint + 5); //apex of segment
+  curveVertex(shellshadowX + seashellWidth + 10, shellshadowHeight + 5);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
+
+  beginShape(); //central segment
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX - seashellWidth, shellshadowHeight);
+  curveVertex(shellshadowX, shellshadowPoint); //apex of segment
+  curveVertex(shellshadowX + seashellWidth, shellshadowHeight);
+  curveVertex(shellshadowX, shellshadowY);
+  curveVertex(shellshadowX, shellshadowY);
+  endShape();
 }
 
-function starfish() {}
+function seashell() {
+  triangle(
+    //right bottom piece
+    seashellX,
+    seashellY,
+    seashellX + seashellWidth + 10,
+    seashellHeight + 30,
+    seashellX + seashellWidth + 7,
+    seashellY + 2
+  );
+
+  triangle(
+    //left bottom piece
+    seashellX,
+    seashellY,
+    seashellX - seashellWidth - 10,
+    seashellHeight + 30,
+    seashellX - seashellWidth - 7,
+    seashellY + 2
+  );
+
+  beginShape(); // number three left from center
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth - 18, seashellHeight + 30);
+  curveVertex(seashellX - 20, seashellPoint + 30); //apex of segment
+  curveVertex(seashellX + seashellWidth - 15, seashellHeight + 30);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+
+  beginShape(); // number three right from center
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth + 15, seashellHeight + 30);
+  curveVertex(seashellX + 20, seashellPoint + 30); //apex of segment
+  curveVertex(seashellX + seashellWidth + 18, seashellHeight + 30);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+
+  beginShape(); // number two left from center
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth - 17, seashellHeight + 15);
+  curveVertex(seashellX - 17, seashellPoint + 15); //apex of segment
+  curveVertex(seashellX + seashellWidth - 15, seashellHeight + 15);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+
+  beginShape(); // number two right from center
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth + 15, seashellHeight + 15);
+  curveVertex(seashellX + 17, seashellPoint + 15); //apex of segment
+  curveVertex(seashellX + seashellWidth + 16, seashellHeight + 15);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+
+  beginShape(); // number one left from center
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth - 10, seashellHeight + 5);
+  curveVertex(seashellX - 10, seashellPoint + 5); //apex of segment
+  curveVertex(seashellX + seashellWidth - 10, seashellHeight + 5);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+
+  beginShape(); // number one right from center
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth + 10, seashellHeight + 5);
+  curveVertex(seashellX + 10, seashellPoint + 5); //apex of segment
+  curveVertex(seashellX + seashellWidth + 10, seashellHeight + 5);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+
+  beginShape(); //central segment
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX - seashellWidth, seashellHeight);
+  curveVertex(seashellX, seashellPoint); //apex of segment
+  curveVertex(seashellX + seashellWidth, seashellHeight);
+  curveVertex(seashellX, seashellY);
+  curveVertex(seashellX, seashellY);
+  endShape();
+}
 
 function starfishshadow() {}
