@@ -8,7 +8,7 @@ let dorsalfinX = fishbodyX + 0;
 let dorsalfinY = fishbodyY - 0;
 let kinaX = 45;
 let kinaY = 155;
-let kinasize = 32.5;
+let kinasize = 30;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
@@ -142,6 +142,33 @@ function seashells() {
   ellipseMode(CENTER);
   fill(0);
   ellipse(kinaX, kinaY, 5, 5);
+
+  fill(255);
+  stroke(0.5);
+  ellipse(kinaX, kinaY - 10, 1, 1);
+  ellipse(kinaX, kinaY + 10, 1, 1);
+  ellipse(kinaX - 10, kinaY, 1, 1);
+  ellipse(kinaX + 10, kinaY, 1, 1);
+
+  ellipse(kinaX, kinaY - 20, 2, 2);
+  ellipse(kinaX, kinaY + 20, 2, 2);
+  ellipse(kinaX - 20, kinaY, 2, 2);
+  ellipse(kinaX + 20, kinaY, 2, 2);
+
+  ellipse(kinaX, kinaY - 30, 3, 3);
+  ellipse(kinaX, kinaY + 30, 3, 3);
+  ellipse(kinaX - 30, kinaY, 3, 3);
+  ellipse(kinaX + 30, kinaY, 3, 3);
+
+  ellipse(kinaX - 10, kinaY - 10, 1.5, 1.5);
+  ellipse(kinaX + 10, kinaY + 10, 1.5, 1.5);
+  ellipse(kinaX - 10, kinaY + 10, 1.5, 1.5);
+  ellipse(kinaX + 10, kinaY - 10, 1.5, 1.5);
+
+  ellipse(kinaX - 20, kinaY - 20, 2.5, 2.5);
+  ellipse(kinaX + 20, kinaY + 20, 2.5, 2.5);
+  ellipse(kinaX - 20, kinaY + 20, 2.5, 2.5);
+  ellipse(kinaX + 20, kinaY - 20, 2.5, 2.5);
 }
 
 function seashellshadow() {
