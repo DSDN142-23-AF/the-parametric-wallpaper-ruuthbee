@@ -6,16 +6,19 @@ let fishshadowY = fishbodyY + 15;
 let fisheyesize = 5;
 let dorsalfinX = fishbodyX + 0;
 let dorsalfinY = fishbodyY - 0;
+let kinaX = 45;
+let kinaY = 155;
+let kinasize = 32.5;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(true); //set this to false when you're ready to print
+  pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
   pWallpaper.grid_settings.cell_width = 200;
   pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset = 50;
+  pWallpaper.grid_settings.row_offset = 200;
 }
 
 function wallpaper_background() {
@@ -30,6 +33,10 @@ function my_symbol() {
   fisheye();
   finscales();
   fishscales();
+
+  seashellshadow();
+  seashells();
+  starfish();
 }
 
 function fishbody(x, y) {
@@ -124,13 +131,24 @@ function fishscales() {
   line(fishbodyX + 40, fishbodyY + 38, fishbodyX + 35, fishbodyY + 60);
 
   line(fishbodyX + 90, fishbodyY + 70, fishbodyX + 88, fishbodyY + 85);
-  line(fishbodyX + 95, fishbodyY + 70, fishbodyX + 93, fishbodyY + 85);
+  line(fishbodyX + 95, fishbodyY + 75, fishbodyX + 93, fishbodyY + 90);
 }
 
-function seashells() {}
+function seashells() {
+  ellipseMode(RADIUS);
+  fill(255);
+  ellipse(kinaX, kinaY, kinasize);
+
+  ellipseMode(CENTER);
+  fill(0);
+  ellipse(kinaX, kinaY, 5, 5);
+}
+
+function seashellshadow() {
+  fill(000);
+  ellipse(kinaX - 7, kinaY + 15, kinasize * 1.8);
+}
 
 function starfish() {}
 
-function seaweed() {}
-
-function water() {}
+function starfishshadow() {}
