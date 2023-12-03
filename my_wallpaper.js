@@ -1,6 +1,6 @@
 //your parameter variables go here!
 let fishbodyY = 10;
-let fishbodyX = 20;
+let fishbodyX = 0;
 
 let fishshadowX = fishbodyX - 7;
 let fishshadowY = fishbodyY + 15;
@@ -8,15 +8,15 @@ let fishshadowY = fishbodyY + 15;
 let fisheyesize = 5;
 
 let dorsalfinX = fishbodyX + 0;
-let dorsalfinY = fishbodyY - 0;
+let dorsalfinY = fishbodyY - 10;
 
-let kinaX = 45;
-let kinaY = 155;
+let kinaX = 150;
+let kinaY = 15;
 
 let kinasize = 30;
 
-let seashellX = 165;
-let seashellY = 65;
+let seashellX = 50;
+let seashellY = 180;
 
 let seashellWidth = 5;
 let seashellHeight = seashellY - 40;
@@ -28,19 +28,21 @@ let shellshadowY = seashellY + 5;
 let shellshadowHeight = shellshadowY - 40;
 let shellshadowPoint = shellshadowHeight - 10;
 
+let shadowstroke = 1;
+
 let offset = 50; //has to be a multiple of 50 for waves to line up, if offset > 100 then lines will cross over.
 
 let wave1X = offset / 2;
 let wave2X = offset + offset / 2;
 
-let waveintensity = 50; // 0 = flat, no wave --> as number intcreases wave becomes more curvy.
-let waveWidth = 1;
+let waveintensity = 10; // 0 = flat, no wave --> as number intcreases wave becomes more curvy.
+let waveWidth = 40;
 
-let darkMode = true;
+let darkMode = false;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(NINE_LANDSCAPE);
+  pWallpaper.resolution(A3);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
@@ -100,8 +102,10 @@ function fishbody() {
 function fishshadow() {
   if (darkMode) {
     fill(232, 250, 255, 85);
+    strokeWeight(shadowstroke);
   } else {
     fill(1, 24, 74);
+    strokeWeight(shadowstroke);
   }
   beginShape();
   curveVertex(fishshadowX, fishshadowY);
@@ -191,9 +195,11 @@ function fishscales() {
 function kinashell() {
   if (darkMode) {
     stroke(120, 202, 250); //blue
+    strokeWeight(1);
     fill(6, 24, 56); //darker navy blue
   } else {
     stroke(0); //black
+    strokeWeight(1);
     fill(146, 195, 139); // yellow toned green
   }
   ellipseMode(RADIUS);
@@ -246,9 +252,11 @@ function kinashell() {
 function seashellshadow() {
   if (darkMode) {
     fill(232, 250, 255, 85);
+    strokeWeight(shadowstroke);
   } else {
     fill(1, 24, 74);
     stroke(1, 24, 74);
+    strokeWeight(shadowstroke);
   }
 
   ellipse(kinaX - 7, kinaY + 15, kinasize * 1.8); //kina shadow
@@ -447,7 +455,7 @@ function wave() {
   if (darkMode) {
     stroke(120, 202, 250); //blue
   } else {
-    stroke(113, 165, 222); //black
+    stroke(113, 165, 222); //blue
   }
 
   strokeWeight(waveWidth);
