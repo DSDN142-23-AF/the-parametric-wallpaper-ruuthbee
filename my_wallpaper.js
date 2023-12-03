@@ -1,21 +1,30 @@
 //your parameter variables go here!
 let fishbodyY = 10;
 let fishbodyX = 20;
+
 let fishshadowX = fishbodyX - 7;
 let fishshadowY = fishbodyY + 15;
+
 let fisheyesize = 5;
+
 let dorsalfinX = fishbodyX + 0;
 let dorsalfinY = fishbodyY - 0;
+
 let kinaX = 45;
 let kinaY = 155;
+
 let kinasize = 30;
+
 let seashellX = 165;
 let seashellY = 65;
+
 let seashellWidth = 5;
 let seashellHeight = seashellY - 40;
 let seashellPoint = seashellHeight - 10;
+
 let shellshadowX = seashellX - 7;
 let shellshadowY = seashellY + 5;
+
 let shellshadowHeight = shellshadowY - 40;
 let shellshadowPoint = shellshadowHeight - 10;
 
@@ -25,13 +34,13 @@ let wave1X = offset / 2;
 let wave2X = offset + offset / 2;
 
 let waveintensity = 50; // 0 = flat, no wave --> as number intcreases wave becomes more curvy.
-let waveWidth = 10;
+let waveWidth = 1;
 
-let darkMode = false;
+let darkMode = true;
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(DEVELOP_GLYPH);
-  pWallpaper.resolution(FIT_TO_SCREEN);
+  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.resolution(NINE_LANDSCAPE);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
@@ -70,7 +79,7 @@ function fishbody() {
     stroke(120, 202, 250);
   } else {
     fill(252, 213, 206); //light pink salmon?
-    stroke(000);
+    stroke(0);
   }
   strokeWeight(1);
   beginShape();
@@ -94,7 +103,6 @@ function fishshadow() {
   } else {
     fill(1, 24, 74);
   }
-  noStroke();
   beginShape();
   curveVertex(fishshadowX, fishshadowY);
   curveVertex(fishshadowX, fishshadowY); //nose
@@ -128,7 +136,7 @@ function fishfins() {
     stroke(120, 202, 250); //blue
     fill(6, 24, 56); //darker navy blue
   } else {
-    stroke(000); //black
+    stroke(0); //black
     fill(248, 173, 157); //deeper salmon pink
   }
   strokeWeight(1);
@@ -143,15 +151,6 @@ function fishfins() {
   curveVertex(dorsalfinX + 118, dorsalfinY + 100);
   endShape();
 
-  //beginShape();
-  //curveVertex(fishbodyX + 45, fishbodyY + 40);
-  //curveVertex(fishbodyX + 40, fishbodyY + 40);
-  // curveVertex(fishbodyX + 38, fishbodyY + 55);
-  //curveVertex(fishbodyX + 60, fishbodyY + 75);
-  // curveVertex(fishbodyX + 80, fishbodyY + 85);
-  //curveVertex(fishbodyX + 80, fishbodyY + 85);
-  //endShape();
-
   beginShape();
   curveVertex(fishbodyX + 95, fishbodyY + 100);
   curveVertex(fishbodyX + 70, fishbodyY + 103);
@@ -165,7 +164,7 @@ function finscales() {
   if (darkMode) {
     stroke(120, 202, 250); //blue
   } else {
-    stroke(000); //black
+    stroke(0); //black
   }
   line(fishbodyX + 145, fishbodyY + 135, fishbodyX + 170, fishbodyY + 150);
   line(fishbodyX + 146, fishbodyY + 140, fishbodyX + 158, fishbodyY + 157);
@@ -178,7 +177,7 @@ function fishscales() {
   if (darkMode) {
     stroke(120, 202, 250); //blue
   } else {
-    stroke(000); //black
+    stroke(0); //black
   }
   line(fishbodyX + 25, fishbodyY + 50, fishbodyX + 45, fishbodyY + 45);
   line(fishbodyX + 30, fishbodyY + 55, fishbodyX + 50, fishbodyY + 50);
@@ -194,7 +193,7 @@ function kinashell() {
     stroke(120, 202, 250); //blue
     fill(6, 24, 56); //darker navy blue
   } else {
-    stroke(000); //black
+    stroke(0); //black
     fill(146, 195, 139); // yellow toned green
   }
   ellipseMode(RADIUS);
@@ -204,8 +203,8 @@ function kinashell() {
     stroke(120, 202, 250); //blue
     fill(6, 24, 56); //darker navy blue
   } else {
-    stroke(000); //black
-    fill(00);
+    stroke(0); //black
+    fill(0);
   }
   ellipseMode(CENTER);
   ellipse(kinaX, kinaY, kinasize / 6);
@@ -214,7 +213,7 @@ function kinashell() {
     stroke(120, 202, 250); //blue
     fill(6, 24, 56); //darker navy blue
   } else {
-    stroke(000); //black
+    stroke(0); //black
     fill(204, 213, 174); //light sage green
   }
   strokeWeight(0.5);
@@ -350,7 +349,7 @@ function seashell() {
   if (darkMode) {
     stroke(120, 202, 250); //blue
   } else {
-    stroke(000); //black
+    stroke(0); //black
     fill(255, 229, 189); //light pale yellow
   }
   triangle(
