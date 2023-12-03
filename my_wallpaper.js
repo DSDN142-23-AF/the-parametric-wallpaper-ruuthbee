@@ -10,7 +10,7 @@ let kinaX = 45;
 let kinaY = 155;
 let kinasize = 30;
 let seashellX = 165;
-let seashellY = 55;
+let seashellY = 65;
 let seashellWidth = 5;
 let seashellHeight = seashellY - 40;
 let seashellPoint = seashellHeight - 10;
@@ -20,17 +20,23 @@ let shellshadowY = seashellY + 5;
 let shellshadowHeight = shellshadowY - 40;
 let shellshadowPoint = shellshadowHeight - 10;
 
+let offset = 50; //has to be a multiple of 50 for waves to line up, if offset > 100 then lines will cross over.
+
+let wave1X = offset / 2;
+let wave2X = offset + offset / 2;
+
+let waveintensity = 50; // 0 = flat, no wave --> as number intcreases wave becomes more curvy.
 let darkMode = false;
 
 function setup_wallpaper(pWallpaper) {
-  pWallpaper.output_mode(DEVELOP_GLYPH);
+  pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
-  pWallpaper.show_guide(false); //set this to false when you're ready to print
+  pWallpaper.show_guide(true); //set this to false when you're ready to print
 
   //Grid settings
   pWallpaper.grid_settings.cell_width = 200;
   pWallpaper.grid_settings.cell_height = 200;
-  pWallpaper.grid_settings.row_offset = 200;
+  pWallpaper.grid_settings.row_offset = offset;
 }
 
 function wallpaper_background() {
@@ -43,6 +49,8 @@ function wallpaper_background() {
 
 function my_symbol() {
   // do not rename this function. Treat this similarly to a Draw function
+  wave();
+
   fishshadow();
   fishfins();
   fishbody();
@@ -376,4 +384,58 @@ function seashell() {
   endShape();
 }
 
-function starfishshadow() {}
+function wave() {
+  if (offset == 50) {
+    noFill();
+    beginShape(); // middle
+    curveVertex(wave1X, 0);
+    curveVertex(wave1X, 0);
+    curveVertex(50, 35 + waveintensity);
+    curveVertex(150, 165 - waveintensity);
+    curveVertex(200 - wave1X, 200);
+    curveVertex(200 - wave1X, 200);
+    endShape();
+
+    beginShape(); //top left
+    curveVertex(200 - wave2X, 0);
+    curveVertex(200 - wave2X, 0);
+    curveVertex(150, 35 + waveintensity);
+    curveVertex(200, 100);
+    curveVertex(200, 100);
+    endShape();
+
+    beginShape(); //bottom right
+    curveVertex(0, 100);
+    curveVertex(0, 100);
+    curveVertex(50, 165 - waveintensity);
+    curveVertex(wave2X, 200);
+    curveVertex(wave2X, 200);
+    endShape();
+  } else {
+    noFill();
+    beginShape(); // middle
+    curveVertex(wave1X, 10);
+    curveVertex(wave1X, 10);
+    curveVertex(50, 35 + waveintensity);
+    curveVertex(150, 165 - waveintensity);
+    curveVertex(200 - wave1X, 190);
+    curveVertex(200 - wave1X, 190);
+    endShape();
+
+    beginShape(); //top left
+    curveVertex(200 - wave2X, 10);
+    curveVertex(200 - wave2X, 10);
+    curveVertex(150, 35 + waveintensity);
+    curveVertex(190, 100);
+    curveVertex(190, 100);
+    endShape();
+
+    beginShape(); //bottom right
+    curveVertex(10, 100);
+    curveVertex(10, 100);
+    curveVertex(50, 165 - waveintensity);
+    curveVertex(wave2X, 190);
+    curveVertex(wave2X, 190);
+    endShape();
+  }
+}
