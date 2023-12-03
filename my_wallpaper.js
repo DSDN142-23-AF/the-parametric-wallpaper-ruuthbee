@@ -5,7 +5,7 @@ let fishbodyX = 0;
 let fishshadowX = fishbodyX - 7;
 let fishshadowY = fishbodyY + 15;
 
-let fisheyesize = 5;
+let fisheyesize = 10;
 
 let dorsalfinX = fishbodyX + 0;
 let dorsalfinY = fishbodyY - 10;
@@ -42,7 +42,7 @@ let darkMode = false;
 
 function setup_wallpaper(pWallpaper) {
   pWallpaper.output_mode(GRID_WALLPAPER);
-  pWallpaper.resolution(A3);
+  pWallpaper.resolution(NINE_LANDSCAPE);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
